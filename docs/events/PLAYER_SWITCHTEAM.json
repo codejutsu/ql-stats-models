@@ -1,0 +1,14 @@
+{
+  "DATA": {
+    "KILLER": {
+      "NAME": "inl",
+      "OLD_TEAM": "SPECTATOR",
+      "STEAM_ID": "76561198013158463",
+      "TEAM": "FREE"
+    },
+    "MATCH_GUID": "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "TIME": 1589,
+    "WARMUP": true
+  },
+  "TYPE": "PLAYER_SWITCHTEAM"
+}

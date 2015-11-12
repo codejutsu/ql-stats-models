@@ -1,0 +1,37 @@
+{
+  "DATA" : {
+    "CAPTURE_LIMIT" : 8,
+    "FACTORY" : "duel",
+    "FACTORY_TITLE" : "Duel",
+    "FRAG_LIMIT" : 0,
+    "GAME_TYPE" : "DUEL",
+    "INFECTED" : 0,
+    "INSTAGIB" : 0,
+    "MAP" : "cure",
+    "MATCH_GUID" : "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "MERCY_LIMIT" : 0,
+    "PLAYERS" : [
+      {
+        "NAME" : "inl",
+        "STEAM_ID" : "76561198013158463",
+        "TEAM" : 0
+      },
+      {
+        "NAME" : "auraDiiN",
+        "STEAM_ID" : "76561198000636434",
+        "TEAM" : 0
+      },
+      {
+        "NAME" : "znzn, the mozg..",
+        "STEAM_ID" : "76561198257190136",
+        "TEAM" : 3
+      }
+    ],
+    "QUADHOG" : 0,
+    "SCORE_LIMIT" : 150,
+    "SERVER_TITLE" : ".se Arte et Marte  #1",
+    "TIME_LIMIT" : 10,
+    "TRAINING" : 0
+  },
+  "TYPE" : "MATCH_STARTED"
+}

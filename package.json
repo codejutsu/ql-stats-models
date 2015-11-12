@@ -1,0 +1,25 @@
+{
+  "name": "ql-stats-schemas",
+  "version": "0.0.1",
+  "description": "Document schemas for Quake Live Statistics and Ranks",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^4.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "quake",
+    "live",
+    "stats",
+    "ranking",
+    "schema",
+    "data",
+    "model",
+    "mongodb"
+  ],
+  "author": "Stephan Wallentin",
+  "license": "MIT"
+}

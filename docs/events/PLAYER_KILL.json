@@ -1,0 +1,69 @@
+{
+  "DATA" : {
+    "KILLER" : {
+      "AIRBORNE" : false,
+      "AMMO" : 1,
+      "ARMOR" : 106,
+      "BOT" : false,
+      "BOT_SKILL" : null,
+      "HEALTH" : 52,
+      "HOLDABLE" : null,
+      "NAME" : "inl",
+      "POSITION" : {
+        "X" : -266.6676940917969,
+        "Y" : 340.6900939941406,
+        "Z" : -103.8731155395508
+      },
+      "POWERUPS" : null,
+      "SPEED" : 256.9620138512695,
+      "STEAM_ID" : "76561198013158463",
+      "SUBMERGED" : false,
+      "TEAM" : 0,
+      "VIEW" : {
+        "X" : 0.87890625,
+        "Y" : 5.361328125,
+        "Z" : 0
+      },
+      "WEAPON" : "RAILGUN"
+    },
+    "MATCH_GUID" : "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "MOD" : "RAILGUN",
+    "OTHER_TEAM_ALIVE" : null,
+    "OTHER_TEAM_DEAD" : null,
+    "ROUND" : null,
+    "SUICIDE" : false,
+    "TEAMKILL" : false,
+    "TEAM_ALIVE" : null,
+    "TEAM_DEAD" : null,
+    "TIME" : 43,
+    "VICTIM" : {
+      "AIRBORNE" : true,
+      "AMMO" : 19,
+      "ARMOR" : 0,
+      "BOT" : false,
+      "BOT_SKILL" : null,
+      "HEALTH" : 32,
+      "HOLDABLE" : null,
+      "NAME" : "auraDiiN",
+      "POSITION" : {
+        "X" : 580.3012084960938,
+        "Y" : 413.3036499023438,
+        "Z" : -92.19054412841797
+      },
+      "POWERUPS" : null,
+      "SPEED" : 870.2172142631977,
+      "STEAM_ID" : "76561198000636434",
+      "STREAK" : 0,
+      "SUBMERGED" : false,
+      "TEAM" : 0,
+      "VIEW" : {
+        "X" : 9.1790771484375,
+        "Y" : -15.5181884765625,
+        "Z" : 0
+      },
+      "WEAPON" : "ROCKET"
+    },
+    "WARMUP" : false
+  },
+  "TYPE" : "PLAYER_KILL"
+}

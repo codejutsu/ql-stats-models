@@ -1,0 +1,10 @@
+{
+  "DATA" : {
+    "MATCH_GUID" : "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "NAME" : "znzn, the mozg..",
+    "STEAM_ID" : "76561198257190136",
+    "TIME" : 19,
+    "WARMUP" : false
+  },
+  "TYPE" : "PLAYER_DISCONNECT"
+}

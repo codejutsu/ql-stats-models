@@ -1,0 +1,12 @@
+{
+  "DATA" : {
+    "MATCH_GUID" : "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "MEDAL" : "FIRSTFRAG",
+    "NAME" : "inl",
+    "STEAM_ID" : "76561198013158463",
+    "TIME" : 43,
+    "TOTAL" : 1,
+    "WARMUP" : false
+  },
+  "TYPE" : "PLAYER_MEDAL"
+}

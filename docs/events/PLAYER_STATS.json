@@ -1,0 +1,217 @@
+{
+  "DATA" : {
+    "ABORTED" : false,
+    "DAMAGE" : {
+      "DEALT" : 3499,
+      "TAKEN" : 2770
+    },
+    "DEATHS" : 5,
+    "ITEM_TIMING" : {
+      "GREEN_ARMOR" : 24092,
+      "MEGA_HEALTH" : 16531,
+      "RED_ARMOR" : 7637,
+      "YELLOW_ARMOR" : 35475
+    },
+    "KILLS" : 16,
+    "LOSE" : 0,
+    "MATCH_GUID" : "cb850666-d5e8-4310-b93b-1083fc26f658",
+    "MAX_STREAK" : 8,
+    "MEDALS" : {
+      "ACCURACY" : 0,
+      "ASSISTS" : 0,
+      "CAPTURES" : 0,
+      "COMBOKILL" : 1,
+      "DEFENDS" : 0,
+      "EXCELLENT" : 0,
+      "FIRSTFRAG" : 1,
+      "HEADSHOT" : 1,
+      "HUMILIATION" : 0,
+      "IMPRESSIVE" : 9,
+      "MIDAIR" : 0,
+      "PERFECT" : 0,
+      "PERFORATED" : 0,
+      "QUADGOD" : 0,
+      "RAMPAGE" : 0,
+      "REVENGE" : 0
+    },
+    "MODEL" : "doom/bright",
+    "NAME" : "inl",
+    "PICKUPS" : {
+      "AMMO" : 2,
+      "ARMOR" : 23,
+      "ARMOR_REGEN" : 0,
+      "BATTLESUIT" : 0,
+      "DOUBLER" : 0,
+      "FLIGHT" : 0,
+      "GREEN_ARMOR" : 13,
+      "GUARD" : 0,
+      "HASTE" : 0,
+      "HEALTH" : 43,
+      "INVIS" : 0,
+      "INVULNERABILITY" : 0,
+      "KAMIKAZE" : 0,
+      "MEDKIT" : 0,
+      "MEGA_HEALTH" : 8,
+      "OTHER_HOLDABLE" : 0,
+      "OTHER_POWERUP" : 0,
+      "PORTAL" : 0,
+      "QUAD" : 0,
+      "RED_ARMOR" : 10,
+      "REGEN" : 0,
+      "SCOUT" : 0,
+      "TELEPORTER" : 0,
+      "YELLOW_ARMOR" : 7
+    },
+    "PLAY_TIME" : 2229,
+    "QUIT" : 0,
+    "RANK" : 1,
+    "SCORE" : 16,
+    "STEAM_ID" : "76561198013158463",
+    "TIED_RANK" : 0,
+    "WARMUP" : false,
+    "WEAPONS" : {
+      "BFG" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "CHAINGUN" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "GAUNTLET" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "GRENADE" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "HMG" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "LIGHTNING" : {
+        "D" : 0,
+        "DG" : 252,
+        "DR" : 0,
+        "H" : 42,
+        "K" : 2,
+        "P" : 3,
+        "S" : 92,
+        "T" : 17
+      },
+      "MACHINEGUN" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 20,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 22,
+        "T" : 1705
+      },
+      "NAILGUN" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "OTHER_WEAPON" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "PLASMA" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 64,
+        "H" : 0,
+        "K" : 0,
+        "P" : 2,
+        "S" : 0,
+        "T" : 3
+      },
+      "PROXMINE" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 0,
+        "S" : 0,
+        "T" : 0
+      },
+      "RAILGUN" : {
+        "D" : 3,
+        "DG" : 1840,
+        "DR" : 603,
+        "H" : 23,
+        "K" : 10,
+        "P" : 10,
+        "S" : 51,
+        "T" : 147
+      },
+      "ROCKET" : {
+        "D" : 2,
+        "DG" : 1407,
+        "DR" : 1998,
+        "H" : 31,
+        "K" : 4,
+        "P" : 13,
+        "S" : 58,
+        "T" : 355
+      },
+      "SHOTGUN" : {
+        "D" : 0,
+        "DG" : 0,
+        "DR" : 0,
+        "H" : 0,
+        "K" : 0,
+        "P" : 3,
+        "S" : 0,
+        "T" : 0
+      }
+    },
+    "WIN" : 1
+  },
+  "TYPE" : "PLAYER_STATS"
+}
