@@ -7,7 +7,6 @@ describe('When trying to create a player', function () {
 
     before(function () {
         mongoose.connect('mongodb://localhost/ql-stats-test');
-
     });
 
     after(function () {
@@ -28,10 +27,7 @@ describe('When trying to create a player', function () {
             }
         });
 
-        player.save(function (err) {
-            expect(err).to.equal(null);
-            done();
-        });
+        player.save(done);
 
     });
 
