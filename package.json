@@ -1,12 +1,15 @@
 {
-  "name": "ql-stats-schemas",
+  "name": "ql-stats-models",
   "version": "0.0.1",
   "description": "Document schemas for Quake Live Statistics and Ranks",
   "main": "index.js",
   "dependencies": {
     "mongoose": "^4.2.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.3"
+  },
   "scripts": {
     "test": "mocha test"
   },
@@ -21,5 +24,16 @@
     "mongodb"
   ],
   "author": "Stephan Wallentin",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codejutsu/ql-stats-models.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codejutsu/ql-stats-models/issues"
+  },
+  "homepage": "https://github.com/codejutsu/ql-stats-models#readme"
 }
