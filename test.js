@@ -1,21 +1,22 @@
-var mongoose =  require('mongoose'),
-	models = require('./index'),
-	Player = models.Player;
+var mongoose = require('mongoose'),
+	models = require('./index');
+mongoose.connect('mongodb://localhost/ql-gamestats-model-v0-0-1');
 
-mongoose.connect('mongodb://localhost/qltest');
+//console.log(models);
 
-var player = new Player({
-	profile: {
-		steam_id: 'apa'
-	}
+Object.keys(models['Player'].schema.paths).forEach(function(key) {
+	console.log(key);
 });
-console.log('testing');
 
-player.save(function (err) {
-	console.log('dat player');
 
-	Player.find(function (err, docs) {
-		console.log(docs);
-		Player.remove();
+var playerConnect = require('./test/fixtures/PLAYER_CONNECT');
+console.log(playerConnect);
+
+models.Player.findOrCreateUser(playerConnect).then(function (player) {
+	if (player)
+		console.log('successfull');
+
+	models.Player.updateLastSeen(player.profile.steam.id).then(function (err) {
+		console.log('updated', err);
 	});
 });
