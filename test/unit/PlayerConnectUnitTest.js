@@ -1,8 +1,8 @@
 var Q = require('q'),
-	mongoose =  require('mongoose'),
-	models = require('../../index'),
-	Player = models.Player,
-	playerConnectEventData = require('../fixtures/PLAYER_CONNECT');
+		mongoose =  require('mongoose'),
+		models = require('../../index'),
+		Player = models.Player,
+		playerConnectEventData = require('../fixtures/PLAYER_CONNECT');
 
 expect = require('chai').expect;
 
@@ -31,22 +31,22 @@ describe('When a player connects.', function () {
 	it('should be able to find or create a user', function (done) {
 
 		Player.findOrCreateUser(playerConnectEventData)
-			.then(function (player) {
-				expect(player).to.not.equal(null);
-				done();
-			});
+				.then(function (player) {
+					expect(player).to.not.equal(null);
+					done();
+				});
 	});
 
 	it('should be able to update last seen', function (done) {
 
 		Player.findOrCreateUser(playerConnectEventData)
-			.then(function (player) {
-				Player.updateLastSeen(playerConnectEventData)
-					.then(function (err) {
-						expect(err).to.equal(null);
-						done();
+				.then(function (player) {
+					Player.updateLastSeen(playerConnectEventData)
+							.then(function (err) {
+								expect(err).to.equal(null);
+								done();
+							});
 				});
-			});
 
 
 	});

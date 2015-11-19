@@ -1,9 +1,9 @@
 var Q = require('q'),
-	mongoose =  require('mongoose'),
-	models = require('../../index'),
-	Player = models.Player,
-	MatchReport = models.MatchReport,
-	playerStatsEventData = require('../fixtures/PLAYER_STATS.json');
+		mongoose =  require('mongoose'),
+		models = require('../../index'),
+		Player = models.Player,
+		MatchReport = models.MatchReport,
+		playerStatsEventData = require('../fixtures/PLAYER_STATS.json');
 
 expect = require('chai').expect;
 
@@ -32,12 +32,10 @@ describe('When a server has submitted a player gamestats object.', function () {
 
 	it('should be to create player match gamestats', function (done) {
 		//PlayerMatchStats();
-		done();
 	});
 
 	it('should be able to update player global counters', function (done) {
 		// PlayerStats;
-		done();
 	});
 
 

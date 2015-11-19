@@ -1,9 +1,9 @@
 var Q = require('q'),
 	mongoose =  require('mongoose'),
-    models = require('../../index'),
-    Player = models.Player,
-    MatchReport = models.MatchReport,
-    PlayerMatchStats = models.PlayerMatchStats,
+	models = require('../../index'),
+	Player = models.Player,
+	MatchReport = models.MatchReport,
+	PlayerMatchStats = models.PlayerMatchStats,
 	matchStartEventData = require('../fixtures/MATCH_STARTED.json');
 
 expect = require('chai').expect;
@@ -11,8 +11,8 @@ expect = require('chai').expect;
 describe('When match has started.', function () {
 	var matchReport;
 
-    before(function () {
-        mongoose.connect('mongodb://localhost/ql-gamestats-test');
+	before(function () {
+		mongoose.connect('mongodb://localhost/ql-gamestats-test');
 		Q.all([
 			Player.remove().then(),
 			MatchReport.remove().then(),
@@ -20,9 +20,9 @@ describe('When match has started.', function () {
 		]).then(function () {
 			done();
 		});
-    });
+	});
 
-    afterEach(function (done) {
+	afterEach(function (done) {
 		Q.all([
 			Player.remove().then(),
 			MatchReport.remove().then(),
@@ -30,14 +30,14 @@ describe('When match has started.', function () {
 		]).then(function () {
 			done();
 		});
-    });
+	});
 
-    after(function () {
-        // NOTE: Please don't forget to clean out all collections you used.
-        mongoose.models = {};
-        mongoose.modelSchemas = {};
-        mongoose.disconnect();
-    });
+	after(function () {
+		// NOTE: Please don't forget to clean out all collections you used.
+		mongoose.models = {};
+		mongoose.modelSchemas = {};
+		mongoose.disconnect();
+	});
 
 	it('should create a match report', function (done) {
 		MatchReport.createFrom(matchStartEventData).then(function (document) {
