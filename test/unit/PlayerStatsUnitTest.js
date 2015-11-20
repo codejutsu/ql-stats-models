@@ -3,7 +3,6 @@ var Q = require('q'),
 		models = require('../../index'),
 		Player = models.Player,
 		PlayerMatchStats = models.PlayerMatchStats,
-		Match = models.Match,
 		MatchReport = models.MatchReport,
 		playerStatsEventData = require('../fixtures/PLAYER_STATS.json');
 
@@ -15,7 +14,7 @@ describe('When a server has submitted a player gamestats object.', function () {
 		mongoose.connect('mongodb://localhost/ql-gamestats-test');
 		Q.all([
 			new MatchReport({
-				match_guid: playerStatsEventData.DATA.MATCH_GUID
+				guid: playerStatsEventData.DATA.MATCH_GUID
 			}).save().then(),
 			Player.findOrCreateUser(playerStatsEventData).then()
 		]).then(function (matchreport, player) {
@@ -41,11 +40,10 @@ describe('When a server has submitted a player gamestats object.', function () {
 
 
 	it('should be to create player match stats', function (done) {
-		//PlayerMatchStats.createFrom(playerStatsEventData).then(function (playerMatchStats) {
-		//	console.log('harrow', playerMatchStats);
-		//	done();
-		//});
-		done();
+		PlayerMatchStats.createFrom(playerStatsEventData).then(function (playerMatchStats) {
+			console.log(playerMatchStats);
+			done();
+		});
 	});
 
 	it('should be able to update player global stats', function () {
