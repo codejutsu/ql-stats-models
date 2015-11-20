@@ -2,6 +2,8 @@ var Q = require('q'),
 		mongoose =  require('mongoose'),
 		models = require('../../index'),
 		Player = models.Player,
+		PlayerMatchStats = models.PlayerMatchStats,
+		Match = models.Match,
 		MatchReport = models.MatchReport,
 		playerStatsEventData = require('../fixtures/PLAYER_STATS.json');
 
@@ -9,33 +11,49 @@ expect = require('chai').expect;
 
 describe('When a server has submitted a player gamestats object.', function () {
 
-	before(function () {
+	before(function (done) {
 		mongoose.connect('mongodb://localhost/ql-gamestats-test');
+		Q.all([
+			new MatchReport({
+				match_guid: playerStatsEventData.DATA.MATCH_GUID
+			}).save().then(),
+			Player.findOrCreateUser(playerStatsEventData).then()
+		]).then(function (matchreport, player) {
+			expect(matchreport).not.to.equal(null);
+			expect(player).not.to.equal(null);
+			done();
+		});
+
 	});
 
-	afterEach(function (done) {
+	after(function (done) {
 		Q.all([
 			Player.remove().then(),
 			MatchReport.remove().then()
 		]).then(function () {
+			mongoose.models = {};
+			mongoose.modelSchemas = {};
+			mongoose.disconnect();
 			done();
 		});
-	});
 
-	after(function () {
-		// NOTE: Please don't forget to clean out all collections you used.
-		mongoose.models = {};
-		mongoose.modelSchemas = {};
-		mongoose.disconnect();
 	});
 
 
-	it('should be to create player match gamestats', function (done) {
-		//PlayerMatchStats();
+	it('should be to create player match stats', function (done) {
+		//PlayerMatchStats.createFrom(playerStatsEventData).then(function (playerMatchStats) {
+		//	console.log('harrow', playerMatchStats);
+		//	done();
+		//});
+		done();
 	});
 
-	it('should be able to update player global counters', function (done) {
-		// PlayerStats;
+	it('should be able to update player global stats', function () {
+		// Player;
+	});
+
+	it('should be able to update player game mode stats', function () {
+		// Player.updateStatsByGameMode(data, stats)
 	});
 
 

@@ -20,11 +20,12 @@ describe('When a player connects.', function () {
 		});
 	});
 
-	after(function () {
+	after(function (done) {
 		// NOTE: Please don't forget to clean out all collections you used.
 		mongoose.models = {};
 		mongoose.modelSchemas = {};
 		mongoose.disconnect();
+		done();
 	});
 
 

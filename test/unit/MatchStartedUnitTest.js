@@ -29,14 +29,17 @@ describe('When match has started.', function () {
 			PlayerMatchStats.remove().then()
 		]).then(function () {
 			done();
+		}).fail(function (e) {
+			console.log(e);
 		});
 	});
 
-	after(function () {
+	after(function (done) {
 		// NOTE: Please don't forget to clean out all collections you used.
 		mongoose.models = {};
 		mongoose.modelSchemas = {};
 		mongoose.disconnect();
+		done();
 	});
 
 	it('should create a match report', function (done) {
@@ -73,7 +76,7 @@ describe('When match has started.', function () {
 		});
 
 		it('should associate players with match (exclude spectators)', function (done) {
-			Player.findBySteamIDs(steamIds)
+			Player.findBySteamIds(steamIds)
 				.then(function (players) {
 					MatchReport.findByGuid(matchStartEventData.DATA.MATCH_GUID).then(function (report) {
 

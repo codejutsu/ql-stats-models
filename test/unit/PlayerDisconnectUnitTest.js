@@ -20,10 +20,11 @@ describe('When a player disconnects.', function () {
 		});
 	});
 
-	after(function () {
+	after(function (done) {
 		mongoose.models = {};
 		mongoose.modelSchemas = {};
 		mongoose.disconnect();
+		done();
 	});
 
 
