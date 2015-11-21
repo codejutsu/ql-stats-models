@@ -12,7 +12,7 @@ describe('When match has started.', function () {
 	var matchReport;
 
 	before(function () {
-		mongoose.connect('mongodb://localhost/ql-gamestats-test');
+		mongoose.connect('mongodb://localhost/ql-game-test');
 		Q.all([
 			Player.remove().then(),
 			MatchReport.remove().then(),

@@ -11,7 +11,7 @@ describe('When using the Player model.', function () {
 
 	before(function (done) {
 
-		mongoose.connect('mongodb://localhost/ql-gamestats-test');
+		mongoose.connect('mongodb://localhost/ql-game-test');
 		Q.all([
 				new Player({steam_id: steamIds[0]}).save().then(),
 				new Player({steam_id: steamIds[1]}).save().then()

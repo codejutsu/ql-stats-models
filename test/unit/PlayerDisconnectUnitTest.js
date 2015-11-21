@@ -9,7 +9,7 @@ expect = require('chai').expect;
 describe('When a player disconnects.', function () {
 
 	before(function () {
-		mongoose.connect('mongodb://localhost/ql-gamestats-test');
+		mongoose.connect('mongodb://localhost/ql-game-test');
 	});
 
 	afterEach(function (done) {
