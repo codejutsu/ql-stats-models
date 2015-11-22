@@ -9,7 +9,7 @@ expect = require('chai').expect;
 describe('When a player connects.', function () {
 
 	before(function () {
-		mongoose.connect('mongodb://localhost/ql-game-test');
+		mongoose.connect('mongodb://localhost/ql-stats-models-test');
 	});
 
 	afterEach(function (done) {
@@ -21,7 +21,6 @@ describe('When a player connects.', function () {
 	});
 
 	after(function (done) {
-		// NOTE: Please don't forget to clean out all collections you used.
 		mongoose.models = {};
 		mongoose.modelSchemas = {};
 		mongoose.disconnect();

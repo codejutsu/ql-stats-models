@@ -8,11 +8,12 @@ var Q = require('q'),
 
 expect = require('chai').expect;
 
-describe('When match has started.', function () {
+
+describe('MATCH_STARTED - When match has started.', function () {
 	var matchReport;
 
-	before(function () {
-		mongoose.connect('mongodb://localhost/ql-game-test');
+	before(function (done) {
+		mongoose.connect('mongodb://localhost/ql-stats-models-test');
 		Q.all([
 			Player.remove().then(),
 			MatchReport.remove().then(),
@@ -29,13 +30,10 @@ describe('When match has started.', function () {
 			PlayerMatchStats.remove().then()
 		]).then(function () {
 			done();
-		}).fail(function (e) {
-			console.log(e);
 		});
 	});
 
 	after(function (done) {
-		// NOTE: Please don't forget to clean out all collections you used.
 		mongoose.models = {};
 		mongoose.modelSchemas = {};
 		mongoose.disconnect();
@@ -43,6 +41,7 @@ describe('When match has started.', function () {
 	});
 
 	it('should create a match report', function (done) {
+
 		MatchReport.createFrom(matchStartEventData).then(function (document) {
 			expect(document._id).to.not.equal(null);
 			matchReport = document;
@@ -75,22 +74,21 @@ describe('When match has started.', function () {
 
 		});
 
-		it('should associate players with match report (exclude spectators)', function (done) {
-			Player.findBySteamIds(steamIds)
-				.then(function (players) {
-					MatchReport.findByGuid(matchStartEventData.DATA.MATCH_GUID).then(function (report) {
+		it('should be able to add players to a match report', function (done) {
+			Q.all([
+				Player.findBySteamIds(steamIds).then(),
+				MatchReport.findByGuid(matchStartEventData.DATA.MATCH_GUID).then()
+			]).then(function (results) {
+				var players = results[0],
+					matchReport = results[1];
 
-						report.players = players.map(function (p) {
-							return p._id;
-						});
-
-						report.save().then(function (doc) {
-							expect(doc.players.length).to.equal(3);
-							done();
-						});
-
-					});
+				matchReport.addPlayers(players).then(function (result) {
+					expect(result.ok).to.equal(1);
+					done();
 				});
+
+			})
+
 		});
 
 	});

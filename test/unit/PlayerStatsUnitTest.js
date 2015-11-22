@@ -5,18 +5,18 @@ var Q = require('q'),
 	PlayerMatchStats = models.PlayerMatchStats,
 	MatchReport = models.MatchReport,
 	GlobalStats = models.GlobalStats,
-	playerStatsEventData = require('../fixtures/PLAYER_STATS.json');
+	playerStatsEventData = require('../fixtures/PLAYER_STATS.json'),
 	matchStartedEventData = require('../fixtures/MATCH_STARTED.json');
 
 expect = require('chai').expect;
 
-describe('When a server has submitted a player game object.', function () {
+describe('PLAYER_STATS - When a server has submitted a player game object.', function () {
 
 	var _player,
 		_playerMatchStats;
 
 	before(function (done) {
-		mongoose.connect('mongodb://localhost/ql-stats-test');
+		mongoose.connect('mongodb://localhost/ql-stats-models-test');
 		Q.all([
 			MatchReport.createFrom(matchStartedEventData).then(),
 			Player.findOrCreateUser(playerStatsEventData).then(),
@@ -75,9 +75,6 @@ describe('When a server has submitted a player game object.', function () {
 				.then(function (status) {
 					expect(status[0].ok).to.equal(1);
 					expect(status[1].ok).to.equal(1);
-					done();
-				}, function (err) {
-					console.error(err);
 					done();
 				});
 	});

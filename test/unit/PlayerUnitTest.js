@@ -1,5 +1,5 @@
 var Q = require('q'),
-	mongoose =  require('mongoose'),
+	mongoose = require('mongoose'),
 	models = require('../../index'),
 	Player = models.Player,
 	playerConnectEventData = require('../fixtures/PLAYER_CONNECT'),
@@ -7,11 +7,11 @@ var Q = require('q'),
 	steamIds = ['76561198013158463', '76561198000636434'],
 	expect = require('chai').expect;
 
+
 describe('When using the Player model.', function () {
 
 	before(function (done) {
-
-		mongoose.connect('mongodb://localhost/ql-game-test');
+		mongoose.connect('mongodb://localhost/ql-stats-models-test');
 		Q.all([
 				new Player({steam_id: steamIds[0]}).save().then(),
 				new Player({steam_id: steamIds[1]}).save().then()
@@ -23,13 +23,13 @@ describe('When using the Player model.', function () {
 
 	after(function (done) {
 		Q.all([
-				Player.remove().then()
-			]).then(function () {
-				mongoose.models = {};
-				mongoose.modelSchemas = {};
-				mongoose.disconnect();
-				done();
-			});
+			Player.remove().then()
+		]).then(function () {
+			mongoose.models = {};
+			mongoose.modelSchemas = {};
+			mongoose.disconnect();
+			done();
+		});
 
 	});
 
