@@ -1,6 +1,6 @@
 {
   "name": "ql-stats-models",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Document schemas for Quake Live Statistics and Ranks",
   "main": "index.js",
   "dependencies": {
