@@ -58,24 +58,24 @@ describe('When match has started.', function () {
 		});
 
 		before(function () {
-			var deferreds = [
+			var defereds = [
 				Player.remove().then(),
 				MatchReport.createFrom(matchStartEventData).then()
 			];
 
 			steamIds.forEach(function (id) {
-				deferreds.push(new Player({
+				defereds.push(new Player({
 					steam_id: id
 				}).save().then());
 			});
 
-			Q.all(deferreds).then(function () {
+			Q.all(defereds).then(function () {
 				done();
 			});
 
 		});
 
-		it('should associate players with match (exclude spectators)', function (done) {
+		it('should associate players with match report (exclude spectators)', function (done) {
 			Player.findBySteamIds(steamIds)
 				.then(function (players) {
 					MatchReport.findByGuid(matchStartEventData.DATA.MATCH_GUID).then(function (report) {

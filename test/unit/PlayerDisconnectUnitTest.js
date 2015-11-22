@@ -29,8 +29,8 @@ describe('When a player disconnects.', function () {
 
 
 	it('should be able to update last seen', function (done) {
-		Player.updateLastSeen(playerDisconnectEventData).then(function (err) {
-			expect(err).to.equal(null);
+		Player.updateLastSeen(playerDisconnectEventData).then(function (result) {
+			expect(result.ok).to.equal(1);
 			done();
 		});
 	});

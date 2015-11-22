@@ -40,11 +40,12 @@ describe('When a player connects.', function () {
 
 	it('should be able to update last seen', function (done) {
 
+		// TODO: Fix this broken logic.
 		Player.findOrCreateUser(playerConnectEventData)
 				.then(function (player) {
 					Player.updateLastSeen(playerConnectEventData)
-							.then(function (err) {
-								expect(err).to.equal(null);
+							.then(function (result) {
+								expect(result.ok).to.equal(1);
 								done();
 							});
 				});
