@@ -28,7 +28,7 @@ Running Mocha recursive with watch is broken due to some underlying issue with m
     $ mocha test --recursive --watch    
 ```
 
-The tests also acts as documentation on how to use these schemas.
+The tests also acts as documentation on how to use these schema
 
 # How could I use these schemas
 
