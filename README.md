@@ -19,8 +19,8 @@ For now your better of running the tests individually.
 ```
     $ mocha test/unit/MatchReportedUnitTest.js
     $ mocha test/unit/MatchStartedUnitTest.js
-    $ mocha test/unit/PlayerConnectedUnitTest.js
-    $ mocha test/unit/PlayerDisconnectedUnitTest.js
+    $ mocha test/unit/PlayerConnectUnitTest.js
+    $ mocha test/unit/PlayerDisconnectUnitTest.js
     $ mocha test/unit/PlayerStatsUnitTest.js
     $ mocha test/unit/PlayerUnitTest.js
 ```
