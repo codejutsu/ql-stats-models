@@ -14,12 +14,12 @@ var Q = require('q'),
 	expect = require('chai').expect;
 
 
-describe('When using the Player model.', function () {
+describe('When using the player model.', function () {
 
 	var Player,
 		_connection;
 
-	before(function (done) {
+	before(function l(done) {
 
 		createConnection('mongodb://localhost/ql-stats-test')
 			.then(require('../../index').register)
@@ -52,6 +52,7 @@ describe('When using the Player model.', function () {
 		});
 
 	});
+
 
 	it('should be able to find player by steam id', function (done) {
 
