@@ -31,10 +31,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codejutsu/ql-stats-models.git"
+    "url": "git+https://github.com/swallentin/ql-stats-models.git"
   },
   "bugs": {
-    "url": "https://github.com/codejutsu/ql-stats-models/issues"
+    "url": "https://github.com/swallentin/ql-stats-models/issues"
   },
-  "homepage": "https://github.com/codejutsu/ql-stats-models#readme"
+  "homepage": "https://github.com/swallentin/ql-stats-models#readme"
 }
