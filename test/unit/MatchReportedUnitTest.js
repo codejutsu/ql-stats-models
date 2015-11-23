@@ -1,33 +1,46 @@
 var Q = require('q'),
 	mongoose =  require('mongoose'),
-	models = require('../../index'),
-	Player = models.Player,
-	PlayerMatchStats = models.PlayerMatchStats,
-	MatchReport = models.MatchReport,
 	matchStartedEventData = require('../fixtures/MATCH_STARTED.json'),
 	matchReportEventData = require('../fixtures/MATCH_REPORT'),
-	_playerMatchStats = [];
+	createConnection = function (connectionString) {
+		var def = Q.defer();
+		var connection = mongoose.createConnection(connectionString, function () {
+			def.resolve(connection);
+		});
+
+		return def.promise;
+	};
 
 expect = require('chai').expect;
 
-
 describe('When a match report has been submitted.', function () {
 
+	var _connection,
+		_playerMatchStats = [],
+		Player,
+		PlayerMatchStats,
+		MatchReport;
+
 	before(function (done) {
-		mongoose.connect('mongodb://localhost/ql-stats-models-test');
-
-		Q.all([
-			new Player({steam_id:'76561198013158463'}).save(),
-			new Player({steam_id:'76561198000636434'}).save(),
-			new PlayerMatchStats({ steam_id: '76561198013158463', game_stats: { win: 1} }).save(),
-			new PlayerMatchStats({ steam_id: '76561198000636434', game_stats: { lose: 1} }).save(),
-			MatchReport.createFrom(matchStartedEventData).then()
-		]).then(function (results) {
-			_playerMatchStats.push(results[2]);
-			_playerMatchStats.push(results[3]);
-			done();
-		})
-
+		createConnection('mongodb://localhost/ql-stats-test')
+				.then(require('../../index').register)
+				.then(function (connection) {
+					_connection = connection;
+					Player = connection.model('Player');
+					MatchReport = connection.model('MatchReport');
+					PlayerMatchStats = connection.model('PlayerMatchStats');
+					Q.all([
+						new Player({steam_id:'76561198013158463'}).save(),
+						new Player({steam_id:'76561198000636434'}).save(),
+						new PlayerMatchStats({ steam_id: '76561198013158463', game_stats: { win: 1} }).save(),
+						new PlayerMatchStats({ steam_id: '76561198000636434', game_stats: { lose: 1} }).save(),
+						MatchReport.createFrom(matchStartedEventData).then()
+					]).then(function (results) {
+						_playerMatchStats.push(results[2]);
+						_playerMatchStats.push(results[3]);
+						done();
+					});
+				});
 	});
 
 	after(function (done) {
@@ -36,9 +49,9 @@ describe('When a match report has been submitted.', function () {
 			PlayerMatchStats.remove().then(),
 			MatchReport.remove().then()
 		]).then(function () {
-			mongoose.models = {};
-			mongoose.modelSchemas = {};
-			mongoose.disconnect();
+			_connection.models = {};
+			_connection.modelSchemas = {};
+			_connection.close();
 			done();
 		})
 	});
@@ -60,7 +73,6 @@ describe('When a match report has been submitted.', function () {
 				done();
 			});
 		})
-
 
 	});
 });

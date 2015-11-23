@@ -1,26 +1,36 @@
 var Q = require('q'),
 	mongoose =  require('mongoose'),
-	models = require('../../index'),
-	Player = models.Player,
-	MatchReport = models.MatchReport,
-	PlayerMatchStats = models.PlayerMatchStats,
-	matchStartEventData = require('../fixtures/MATCH_STARTED.json');
+	matchStartEventData = require('../fixtures/MATCH_STARTED.json'),
+	createConnection = function (connectionString) {
+		var def = Q.defer();
+		var connection = mongoose.createConnection(connectionString, function () {
+			def.resolve(connection);
+		});
+
+		return def.promise;
+	};
 
 expect = require('chai').expect;
 
 
 describe('MATCH_STARTED - When match has started.', function () {
-	var matchReport;
+	var _connection,
+		_matchReport,
+		Player,
+		MatchReport,
+		PlayerMatchStats;
 
 	before(function (done) {
-		mongoose.connect('mongodb://localhost/ql-stats-models-test');
-		Q.all([
-			Player.remove().then(),
-			MatchReport.remove().then(),
-			PlayerMatchStats.remove().then()
-		]).then(function () {
-			done();
-		});
+
+		createConnection('mongodb://localhost/ql-stats-test')
+				.then(require('../../index').register)
+				.then(function (connection) {
+					_connection = connection;
+					Player = connection.model('Player');
+					MatchReport = connection.model('MatchReport');
+					PlayerMatchStats = connection.model('PlayerMatchStats');
+					done();
+				});
 	});
 
 	afterEach(function (done) {
@@ -34,9 +44,9 @@ describe('MATCH_STARTED - When match has started.', function () {
 	});
 
 	after(function (done) {
-		mongoose.models = {};
-		mongoose.modelSchemas = {};
-		mongoose.disconnect();
+		_connection.models = {};
+		_connection.modelSchemas = {};
+		_connection.close();
 		done();
 	});
 
@@ -44,7 +54,7 @@ describe('MATCH_STARTED - When match has started.', function () {
 
 		MatchReport.createFrom(matchStartEventData).then(function (document) {
 			expect(document._id).to.not.equal(null);
-			matchReport = document;
+			_matchReport = document;
 			done();
 		});
 

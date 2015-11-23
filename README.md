@@ -4,7 +4,21 @@
 
 ```
     npm install ql-stats-models
-    var models = require('ql-stats-models');
+    var mongoose = require('mongoose'),
+        connection = mongoose.createConnection('mongodb://localhost/my-db');
+        
+    require('ql-stats-models').register(connection).then(function (connection) {
+        var Player = connection.model('Player'),
+            player = new Player({
+                steam_id: 'abcd'
+            });
+            
+            player.save().then(function (result) {
+                console.log(result);
+            });
+        
+    });
+        
 ```
 
 # Running tests
@@ -14,18 +28,9 @@ Running Mocha recursive with watch is broken due to some underlying issue with m
     $ mocha test --recursive --watch    
 ```
 
-For now your better of running the tests individually.
-
-```
-    $ mocha test/unit/MatchReportedUnitTest.js
-    $ mocha test/unit/MatchStartedUnitTest.js
-    $ mocha test/unit/PlayerConnectedUnitTest.js
-    $ mocha test/unit/PlayerDisconnectedUnitTest.js
-    $ mocha test/unit/PlayerStatsUnitTest.js
-    $ mocha test/unit/PlayerUnitTest.js
-```
+The tests also acts as documentation on how to use these schemas.
 
 # How could I use these schemas
 
 Start a new git repository and ```npm install ql-server-monitor ql-stats-models --save```.
-Start monitoring your servers and when they fire game events, use the GAME EVENT data with the ql-stats-models.np
+Start monitoring your servers and when they fire game events, use the GAME EVENT data with the ql-stats-models.

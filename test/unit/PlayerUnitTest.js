@@ -1,33 +1,53 @@
 var Q = require('q'),
 	mongoose = require('mongoose'),
-	models = require('../../index'),
-	Player = models.Player,
 	playerConnectEventData = require('../fixtures/PLAYER_CONNECT'),
-	playerStatsEventData = require('../fixtures/PLAYER_STATS.json'),
+	playerStatsEventData = require('../fixtures/PLAYER_STATS'),
 	steamIds = ['76561198013158463', '76561198000636434'],
+	createConnection = function (connectionString) {
+		var def = Q.defer();
+		var connection = mongoose.createConnection(connectionString, function () {
+			def.resolve(connection);
+		});
+
+		return def.promise;
+	},
 	expect = require('chai').expect;
 
 
 describe('When using the Player model.', function () {
 
+	var Player,
+		_connection;
+
 	before(function (done) {
-		mongoose.connect('mongodb://localhost/ql-stats-models-test');
-		Q.all([
-				new Player({steam_id: steamIds[0]}).save().then(),
-				new Player({steam_id: steamIds[1]}).save().then()
-			])
-			.then(function () {
-				done();
+
+		createConnection('mongodb://localhost/ql-stats-test')
+			.then(require('../../index').register)
+			.then(function (connection) {
+				_connection = connection;
+				Player = connection.model('Player');
+
+				Q.all([
+						new Player({steam_id: steamIds[0]}).save().then(),
+						new Player({steam_id: steamIds[1]}).save().then()
+					])
+					.then(function () {
+						done();
+					}, function (err) {
+						console.error(err);
+					});
+
 			});
 	});
+
 
 	after(function (done) {
 		Q.all([
 			Player.remove().then()
 		]).then(function () {
-			mongoose.models = {};
-			mongoose.modelSchemas = {};
-			mongoose.disconnect();
+			_connection.models = {};
+			_connection.modelSchemas = {};
+			_connection.close();
 			done();
 		});
 

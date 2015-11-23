@@ -1,15 +1,31 @@
 var Q = require('q'),
 		mongoose =  require('mongoose'),
-		models = require('../../index'),
-		Player = models.Player,
 		playerConnectEventData = require('../fixtures/PLAYER_CONNECT');
+		createConnection = function (connectionString) {
+			var def = Q.defer();
+			var connection = mongoose.createConnection(connectionString, function () {
+				def.resolve(connection);
+			});
+
+			return def.promise;
+		};
 
 expect = require('chai').expect;
 
 describe('When a player connects.', function () {
 
-	before(function () {
-		mongoose.connect('mongodb://localhost/ql-stats-models-test');
+	var Player,
+		_connection;
+
+	before(function (done) {
+
+		createConnection('mongodb://localhost/ql-stats-test')
+				.then(require('../../index').register)
+				.then(function (connection) {
+					_connection = connection;
+					Player = connection.model('Player');
+					done()
+				});
 	});
 
 	afterEach(function (done) {
@@ -21,9 +37,9 @@ describe('When a player connects.', function () {
 	});
 
 	after(function (done) {
-		mongoose.models = {};
-		mongoose.modelSchemas = {};
-		mongoose.disconnect();
+		_connection.models = {};
+		_connection.modelSchemas = {};
+		_connection.close();
 		done();
 	});
 
