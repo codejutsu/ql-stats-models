@@ -4,8 +4,9 @@
   "description": "Document schemas for Quake Live Statistics and Ranks",
   "main": "index.js",
   "dependencies": {
+    "bluebird": "^3.0.5",
     "mongoose": "^4.2.5",
-    "q": "^1.4.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "^3.4.1",

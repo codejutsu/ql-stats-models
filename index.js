@@ -1,18 +1,18 @@
-var Q = require('q'),
+var Promise = require('bluebird'),
 	mongoose = require('mongoose');
 
 module.exports = {
 	register: function (connection) {
-		return Q.try(function () {
+		return new Promise(function (resolve, reject) {
 			require('./lib/models')(connection);
-			return connection;
-		});
+			resolve(connection);
+		})
 	},
 	createConnection: function (connectionString) {
-		var d = Q.defer();
-		var connection = mongoose.createConnection(connectionString, function () {
-			d.resolve(connection);
+		return new Promise(function (resolve, reject) {
+			var connection = mongoose.createConnection(connectionString, function () {
+				resolve(connection);
+			});
 		});
-		return d.promise;
 	}
 };
