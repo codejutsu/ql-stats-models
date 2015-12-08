@@ -28,7 +28,7 @@ var helper = (function () {
 		log.info('Clearing collections:', Object.keys(_db.models).join(' '));
 		Object.keys(_db.models).forEach(function (key) {
 			clearCollectionPromises.push(new Promise(function (res, rej) {
-				_db.models[key].remove().then(res);
+				_db.models[key].remove(res)
 			}));
 		});
 
@@ -67,6 +67,7 @@ var helper = (function () {
 			playerMedal: require('../fixtures/PLAYER_MEDAL.json'),
 			playerStats: require('../fixtures/PLAYER_STATS.json'),
 			playerStats2: require('../fixtures/PLAYER_STATS_2.json'),
+			playerStatsWarmup: require('../fixtures/PLAYER_STATS_WARMUP.json'),
 			playerSwithTeam: require('../fixtures/PLAYER_SWITCHTEAM.json'),
 			roundOver: require('../fixtures/ROUND_OVER.json')
 		}

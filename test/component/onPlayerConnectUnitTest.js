@@ -28,7 +28,7 @@ describe('When using the player model.', function () {
 
 	it('should be able to find or create a user', function (done) {
 
-		Player.findOrCreateUser(helper.events.playerConnect)
+		Player.findOrCreateBySteamId(helper.events.playerConnect.DATA.STEAM_ID)
 				.then(function (player) {
 					_player = player;
 					expect(player).to.not.equal(null);
@@ -38,13 +38,11 @@ describe('When using the player model.', function () {
 
 	it('should be able to update last seen', function (done) {
 
-		Player.findOrCreateUser(helper.events.playerConnect)
-				.then(function () {
-					Player.updateLastSeen(helper.events.playerConnect)
-							.then(function (result) {
-								expect(result.ok).to.equal(1);
-								done();
-							});
+		Player.findOrCreateBySteamId(helper.events.playerConnect.DATA.STEAM_ID)
+				.then(Player.updateLastSeen)
+				.then(function (result) {
+					expect(result.ok).to.equal(1);
+					done();
 				});
 	});
 });

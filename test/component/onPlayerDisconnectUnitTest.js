@@ -19,7 +19,7 @@ describe('When a player disconnects.', function () {
 		}
 
 		function createPlayer () {
-			return new Player({steam_id: helper.events.playerDisconnect.DATA.STEAM_ID}).save().then();
+			return Player.findOrCreateBySteamId(helper.events.playerConnect.DATA.STEAM_ID).then();
 		}
 
 		helper.before()
@@ -34,13 +34,11 @@ describe('When a player disconnects.', function () {
 
 	it('should be able to update last seen', function (done) {
 
-		Player.findOrCreateUser(helper.events.playerConnect)
-			.then(function () {
-				Player.updateLastSeen(helper.events.playerConnect)
-					.then(function (result) {
-						expect(result.ok).to.equal(1);
-						done();
-					});
+		Player.findOrCreateBySteamId(helper.events.playerConnect.DATA.STEAM_ID)
+			.then(Player.updateLastSeen)
+			.then(function (result) {
+				expect(result.ok).to.equal(1);
+				done();
 			});
 	});
 

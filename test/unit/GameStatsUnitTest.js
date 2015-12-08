@@ -25,19 +25,18 @@ describe('Game Stats Unit Test.', function () {
     after(helper.after);
 
 
-    it('should be able to create or update the match report with match report data', function (done) {
+    it('should be able to create a game stats object using player stats', function (done) {
 
-        GameStats.createWithMatchStarted(helper.events.playerStats)
+        GameStats.createWithPlayerStats(helper.events.playerStats)
             .then(function (gameStats) {
                 expect(gameStats._id).not.to.equal(null);
                 done();
             });
-
     });
 
-      it('should be able to increment with a GameStats object', function (done) {
+    it('should be able to increment with a GameStats object', function (done) {
 
-        GameStats.createWithMatchStarted(helper.events.playerStats)
+        GameStats.createWithPlayerStats(helper.events.playerStats)
             .then(function (originalGameStats) {
                 originalGameStats.incrementWithGameStats(originalGameStats)
                     .then(function (status) {
